@@ -10,6 +10,7 @@ class StoryContainer extends React.Component {
       stories: [],
       foundStories: []
     }
+    this.findStories = this.findStories.bind(this)
   }
 
   componentDidMount() {
@@ -29,12 +30,23 @@ class StoryContainer extends React.Component {
     .catch(err => console.error);
     }
 
+    findStories(event){
+      let storySearch = event.target.value;
+      const matchingStories = [];
+      for(let story of this.state.stories){
+        if(story.title.includes(storySearch)){
+          matchingStories.push(story);
+        }
+      }
+      this.setState({foundStories: matchingStories})
+    }
+
   render() {
     return(
       <div>
       <h1>HACKER NEWS</h1>
       <hr />
-      <StorySearch />
+      <StorySearch handleInput={this.findStories}/>
       <hr />
       <StoryList stories={this.state.stories} foundStories={this.state.foundStories}/>
       </div>

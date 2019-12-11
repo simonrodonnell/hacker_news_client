@@ -3,12 +3,17 @@ import React from 'react'
 const StorySearch = (props) => {
 
 
-return(
+  return(
 
-  <p>I'm a StorySearch!</p>
+    <form>
+    <input
+    type="text"
+    placeholder="Search for story"
+    onKeyUp={props.handleInput}/>
+    </form>
 
-)
-
+  )
 }
+
 
 export default StorySearch
