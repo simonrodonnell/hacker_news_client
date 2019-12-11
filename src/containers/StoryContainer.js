@@ -1,4 +1,5 @@
 import React from 'react'
+import StoryList from '../components/StoryList'
 
 class StoryContainer extends React.Component {
 
@@ -29,7 +30,9 @@ class StoryContainer extends React.Component {
 
   render() {
     return(
-      <h1>Hello!</h1>
+      <div>
+      <StoryList stories={this.state.stories} />
+      </div>
     )
   }
 
