@@ -5,18 +5,23 @@ class StoryContainer extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-    storyIDs: [],
+    storyURLs: [],
     stories: []
   }
 }
 
-componentDidMount(){
+componentDidMount() {
   const url = "https://hacker-news.firebaseio.com/v0/topstories.json"
   fetch(url)
   .then(res => res.json())
-  .then(idList => this.setState({ storyIDs: idList}))
+  .then(idList => idList.map((storyID) => {
+    return `https://hacker-news.firebaseio.com/v0/item/${storyID}.json`
+    }))
+  .then(urlList => this.setState({ storyURLs: urlList}))
   .catch(err => console.error);
 }
+
+
 
 render(){
   return(
