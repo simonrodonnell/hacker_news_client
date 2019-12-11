@@ -1,13 +1,14 @@
 import React from 'react'
 import StoryList from '../components/StoryList'
+import StorySearch from '../components/StorySearch'
 
 class StoryContainer extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      storyURLs: [],
-      stories: []
+      stories: [],
+      foundStories: []
     }
   }
 
@@ -31,7 +32,11 @@ class StoryContainer extends React.Component {
   render() {
     return(
       <div>
-      <StoryList stories={this.state.stories} />
+      <h1>HACKER NEWS</h1>
+      <hr />
+      <StorySearch />
+      <hr />
+      <StoryList stories={this.state.stories} foundStories={this.state.foundStories}/>
       </div>
     )
   }
